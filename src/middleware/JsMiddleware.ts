@@ -64,6 +64,7 @@ export default class JsMiddleware {
     });
     return result;
   }
+
   private static calcDistance(arr: Vector3Array) {
     const get_average_between_two_vec = (p1: Vector3, p2: Vector3) => {
       return {
