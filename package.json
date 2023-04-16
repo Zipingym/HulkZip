@@ -1,0 +1,54 @@
+{
+  "name": "@zipingym/pose-input",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc && vite build",
+    "wasm": "cd ./src/wasm && wasm-pack build --target bundler",
+    "preview": "tsc && vite build && vite preview --host --open",
+    "prettier-watch": "onchange 'src/**/*.ts' -- prettier --write {{changed}}"
+  },
+  "typeRoots": [
+    "node_modules/@types",
+    "src/@types"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/main.es.js"
+    }
+  },
+  "main": "./dist/main.cjs.js",
+  "module": "./dist/main.es.js",
+  "typings": "./dist/main.d.ts",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-inject": "^5.0.3",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^18.15.6",
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "onchange": "^7.1.0",
+    "prettier": "^2.8.4",
+    "rollup-plugin-typescript-paths": "^1.4.0",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6",
+    "vite-plugin-top-level-await": "^1.3.0",
+    "vite-plugin-wasm": "^3.2.2",
+    "vite-tsconfig-paths": "^4.0.5"
+  },
+  "dependencies": {
+    "@dannadori/mediapipe-mix-worker-js": "^0.0.30",
+    "@mediapipe/pose": "^0.5.1675469404",
+    "@tensorflow-models/pose-detection": "^2.0.0",
+    "@tensorflow/tfjs-converter": "^4.3.0",
+    "@tensorflow/tfjs-core": "^4.3.0",
+    "@tensorflow/tfjs-tflite": "^0.0.1-alpha.9"
+  }
+}

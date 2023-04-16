@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["vite/client", "node"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ES2022",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@types", "@types"],
+    "experimentalDecorators": true,
+
+    // "target": "ES2022",
+    // "module": "commonjs",
+    // "moduleResolution": "node",
+    // "resolveJsonModule": true,
+    // "strict": true,
+    // "removeComments": true,
+    // "noImplicitAny": true,
+    // "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "$/*": ["src/*"],
+      "$static/*": ["static/*"]
+    }
+  },
+  "include": ["./src", "vite.config.js"]
+}
