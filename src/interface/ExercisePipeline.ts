@@ -3,7 +3,10 @@ import JointPosition from './JointPosition';
 import Preprocesser from './Preprocesser';
 
 export default interface ExercisePipeline {
-  setJointPosition(pos: JointPosition): Promise<void>;
+  setJointPosition(pos: JointPosition): void;
   setPreprocesser(pro: Preprocesser): void;
-  setClassfier(cla: ExerciseClassfier): Promise<void>;
+  setClassfier(cla: ExerciseClassfier): void;
+  run(
+    buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement
+  ): Promise<Array<number>>;
 }
