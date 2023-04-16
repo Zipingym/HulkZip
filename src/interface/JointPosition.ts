@@ -1,6 +1,9 @@
+import { GpuBuffer } from '@mediapipe/pose';
 import Vector3 from './Vector';
 
 export default interface JointPosition {
   init(): Promise<void>;
-  getJoint(): Promise<Array<Vector3>>;
+  getJoint(
+    video: HTMLImageElement | HTMLVideoElement | HTMLCanvasElement
+  ): Promise<Array<Vector3>>;
 }
