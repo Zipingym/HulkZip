@@ -4,7 +4,7 @@ import {
   BlazePoseMediaPipeEstimationConfig,
 } from '@tensorflow-models/pose-detection';
 import '@mediapipe/pose';
-import { Vector3Array } from '../landmark';
+import { Vector3Array } from '../../../landmark';
 
 const BzPose = (
   config?: BlazePoseMediaPipeModelConfig,

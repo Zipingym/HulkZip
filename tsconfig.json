@@ -15,21 +15,7 @@
     "isolatedModules": false,
     "noEmit": true,
     "typeRoots": ["./node_modules/@types", "@types"],
-    "experimentalDecorators": true,
-
-    // "target": "ES2022",
-    // "module": "commonjs",
-    // "moduleResolution": "node",
-    // "resolveJsonModule": true,
-    // "strict": true,
-    // "removeComments": true,
-    // "noImplicitAny": true,
-    // "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": {
-      "$/*": ["src/*"],
-      "$static/*": ["static/*"]
-    }
+    "experimentalDecorators": true
   },
   "include": ["./src", "vite.config.js"]
 }

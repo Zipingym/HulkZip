@@ -9,13 +9,7 @@ import topLevelAwait from 'vite-plugin-top-level-await';
 export default defineConfig(({ command, mode }) => {
   return {
     assetsInclude: ['**/*.tflite'],
-    plugins: [tsconfigPaths(), wasm()],
-    resolve: {
-      alias: {
-        babylonjs:
-          mode === 'development' ? 'babylonjs/babylon.max' : 'babylonjs',
-      },
-    },
+    plugins: [wasm()],
     optimizeDeps: {
       disabled: true,
     },

@@ -1,6 +1,6 @@
 import '@mediapipe/pose';
 import { Pose as _Pose, VERSION } from '@mediapipe/pose';
-import { Vector3Array } from '../landmark';
+import { Vector3Array } from '../../../landmark';
 
 //@ts-expect-error
 const Pose = _Pose ?? (window.Pose as _Pose);

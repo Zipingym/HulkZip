@@ -1,5 +1,5 @@
-import Preprocesser from '$/interface/Preprocesser';
-import Vector3 from '$/interface/Vector';
+import Preprocesser from '../interface/Preprocesser';
+import Vector3 from '../interface/Vector';
 
 export default class MergePreprocesser implements Preprocesser {
   private preprocessers: Array<Preprocesser>;

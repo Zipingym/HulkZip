@@ -1,4 +1,4 @@
-import { Vector3Array, Vector3 } from '$/landmark';
+import { Vector3Array, Vector3 } from '../landmark';
 import middleware from './middleware';
 
 export default class JsMiddleware {

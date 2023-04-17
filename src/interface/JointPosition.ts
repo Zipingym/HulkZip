@@ -1,4 +1,3 @@
-import { GpuBuffer } from '@mediapipe/pose';
 import Vector3 from './Vector';
 
 export default interface JointPosition {

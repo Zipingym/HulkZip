@@ -1,4 +1,4 @@
-import ExerciseClassfier from '$/interface/ExerciseClassfier';
+import ExerciseClassfier from '../interface/ExerciseClassfier';
 import { Tensor } from '@tensorflow/tfjs-core';
 import * as tflite from '@tensorflow/tfjs-tflite';
 import * as tf from '@tensorflow/tfjs-core';
@@ -19,7 +19,11 @@ export default class Classfier implements ExerciseClassfier {
       const result: Tensor = this.member.predict(
         tf.tensor2d(arr, [1, arr.length])
       ) as Tensor;
-      const resultArr = await result.array();
+      //@ts-expect-error
+      const resultArr: Array<number> = (await result.array())[0];
+      return resultArr;
+    } else {
+      return [];
     }
   }
 }
