@@ -1,4 +1,4 @@
-import videoSrc from '../static/test2.mp4';
+import videoSrc from '../static/test3.mp4';
 import tflite from '../static/work.tflite';
 // import "@tensorflow/tfjs-backend-webgl";
 import {
@@ -8,6 +8,7 @@ import {
   MergePreprocesser,
   AnglePreprocesser,
   DisPreprocesser2,
+  DisPreprocesser,
 } from './main';
 
 const video = document.createElement('video');
@@ -19,10 +20,8 @@ video.muted = true;
 const pipeline = new Pipeline();
 
 const JointPosition = new MpJointPosition({ modelComplexity: 1 });
-const preprocesser = new MergePreprocesser(
-  new AnglePreprocesser(),
-  new DisPreprocesser2()
-);
+const preprocesser = new DisPreprocesser();
+
 const classfier = new TfliteClassfier(tflite);
 
 Promise.all([
@@ -36,6 +35,6 @@ Promise.all([
   pipeline.setClassfier(classfier);
 
   setInterval(() => {
-    pipeline.run(video).then(console.log);
+    pipeline.run(video).then((res) => console.log(res[0] > 0.5));
   }, 1000 / 60);
 });

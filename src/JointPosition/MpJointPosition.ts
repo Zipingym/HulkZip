@@ -9,11 +9,11 @@ export default class MpJointPosition implements JointPosition {
   private pose: mp.PoseInterface;
   constructor(
     options: mp.Options,
-    link: string = 'https://cdn.jsdelivr.net/npm/@mediapipe/pose/'
+    link: string = 'https://cdn.jsdelivr.net/npm/@mediapipe/pose'
   ) {
     this.pose = new Pose({
       locateFile: (file) => {
-        return `${link}${file}`;
+        return `${link}/${file}`;
       },
     });
     this.pose.setOptions(options);

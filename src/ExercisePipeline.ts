@@ -28,11 +28,11 @@ export default class ExercisePipelineImpl implements ExercisePipeline {
       this.preprocesser != undefined &&
       this.classfier != undefined
     ) {
-      return this.classfier.classfier(
-        this.preprocesser.calculate(await this.jointPosition.getJoint(buffer))
+      const temp = this.preprocesser.calculate(
+        await this.jointPosition.getJoint(buffer)
       );
-    }
-    {
+      return this.classfier.classfier(temp);
+    } else {
       throw new Error('');
     }
   }

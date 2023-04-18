@@ -42,7 +42,7 @@ export default class AnglePreprocesser implements Preprocesser {
 
       let res = v1norm.x * v2norm.x + v1norm.y * v2norm.y + v1norm.z * v2norm.z;
       let angle = Math.acos(res);
-      angleArr[idx] = angle;
+      angleArr[idx] = angle / Math.PI;
     });
 
     return angleArr;
