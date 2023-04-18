@@ -35,6 +35,6 @@ Promise.all([
   pipeline.setClassfier(classfier);
 
   setInterval(() => {
-    pipeline.run(video).then((res) => console.log(res[0] > 0.5));
+    // pipeline.run(video).then((res) => console.log(res[0] > 0.5));
   }, 1000 / 60);
 });

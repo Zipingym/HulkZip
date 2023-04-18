@@ -1,4 +1,3 @@
-import Classfier from './legacy/class/Classfier';
 import ExerciseClassfier from './interface/ExerciseClassfier';
 import ExercisePipeline from './interface/ExercisePipeline';
 import JointPosition from './interface/JointPosition';
@@ -22,16 +21,23 @@ export default class ExercisePipelineImpl implements ExercisePipeline {
 
   async run(
     buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement
-  ): Promise<Array<number>> {
+  ): Promise<{
+    result: Array<number>;
+    accuracy: Array<number>;
+  }> {
     if (
       this.jointPosition != undefined &&
       this.preprocesser != undefined &&
       this.classfier != undefined
     ) {
-      const temp = this.preprocesser.calculate(
-        await this.jointPosition.getJoint(buffer)
+      const { joint, accuracy } = await this.jointPosition.getJoint(buffer);
+      const result = await this.classfier.classfier(
+        this.preprocesser.calculate(joint)
       );
-      return this.classfier.classfier(temp);
+      return {
+        result,
+        accuracy,
+      };
     } else {
       throw new Error('');
     }

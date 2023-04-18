@@ -1,6 +1,6 @@
 {
   "name": "@zipingym/pose-input",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",

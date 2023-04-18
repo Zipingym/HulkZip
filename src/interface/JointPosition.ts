@@ -4,5 +4,8 @@ export default interface JointPosition {
   init(): Promise<void>;
   getJoint(
     video: HTMLImageElement | HTMLVideoElement | HTMLCanvasElement
-  ): Promise<Array<Vector3>>;
+  ): Promise<{
+    joint: Array<Vector3>;
+    accuracy: Array<number>;
+  }>;
 }

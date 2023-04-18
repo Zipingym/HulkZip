@@ -26,11 +26,27 @@ export default class MpJointPosition implements JointPosition {
 
   getJoint(
     buffer: HTMLCanvasElement | HTMLVideoElement | HTMLImageElement
-  ): Promise<Vector3[]> {
+  ): Promise<{
+    joint: Array<Vector3>;
+    accuracy: Array<number>;
+  }> {
     return new Promise((resolve, reject) => {
       this.pose.send({ image: buffer });
       this.pose.onResults((result: mp.Results) => {
-        resolve(result.poseWorldLandmarks);
+        const joint = new Array();
+        const accuracy = new Array();
+        result.poseWorldLandmarks.forEach((lmd) => {
+          joint.push({
+            x: lmd.x,
+            y: lmd.y,
+            z: lmd.z,
+          });
+          accuracy.push(lmd.visibility ?? 0);
+        });
+        resolve({
+          joint,
+          accuracy,
+        });
       });
     });
   }

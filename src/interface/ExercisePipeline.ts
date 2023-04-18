@@ -8,5 +8,8 @@ export default interface ExercisePipeline {
   setClassfier(cla: ExerciseClassfier): void;
   run(
     buffer: HTMLVideoElement | HTMLImageElement | HTMLCanvasElement
-  ): Promise<Array<number>>;
+  ): Promise<{
+    result: Array<number>;
+    accuracy: Array<number>;
+  }>;
 }
