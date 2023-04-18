@@ -47,16 +47,17 @@ export default class RangePreprocesser2 implements Preprocesser {
 
   public calculate(arr: Vector3[]): Float32Array {
     const flot32Array = new Float32Array(this.length);
-    flot32Array[0] = RangePreprocesser2.calcDistance(
-      RangePreprocesser2.get_average_between_two_vec(arr[23], arr[24]),
-      RangePreprocesser2.get_average_between_two_vec(arr[11], arr[12])
-    );
+    flot32Array[0] =
+      RangePreprocesser2.calcDistance(
+        RangePreprocesser2.get_average_between_two_vec(arr[23], arr[24]),
+        RangePreprocesser2.get_average_between_two_vec(arr[11], arr[12])
+      ) / 3000;
     RangePreprocesser2.distances.forEach((distance, idx) => {
       const result = RangePreprocesser2.calcDistance(
         arr[distance[0]],
         arr[distance[1]]
       );
-      flot32Array[idx + 1] = result;
+      flot32Array[idx + 1] = result / 3000;
     });
 
     return flot32Array;

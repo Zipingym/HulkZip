@@ -1,5 +1,6 @@
 import Preprocesser from '../interface/Preprocesser';
 import Vector3 from '../interface/Vector';
+import { DisPreprocesser } from '../main';
 
 export default class RangePreprocesser implements Preprocesser {
   private static distances = [
@@ -36,21 +37,34 @@ export default class RangePreprocesser implements Preprocesser {
     return arrayRange;
   }
 
-  public length: number = RangePreprocesser.distances.length * 3;
+  private static get_average_between_two_vec = (p1: Vector3, p2: Vector3) => {
+    return {
+      x: (p1.x + p2.x) / 2.0,
+      y: (p1.y + p2.y) / 2.0,
+      z: (p1.x + p2.z) / 2.0,
+    };
+  };
+
+  public length: number = (RangePreprocesser.distances.length + 1) * 3;
 
   public calculate(arr: Vector3[]): Float32Array {
     const flot32Array = new Float32Array(this.length);
-
+    const [x, y, z] = DisPreprocesser.calcDistance(
+      DisPreprocesser.get_average_between_two_vec(arr[23], arr[24]),
+      DisPreprocesser.get_average_between_two_vec(arr[11], arr[12])
+    );
+    flot32Array[0] = x / 3000;
+    flot32Array[1] = y / 3000;
+    flot32Array[2] = z / 3000;
     RangePreprocesser.distances.forEach((distance, idx) => {
       const result = RangePreprocesser.calcDistance(
         arr[distance[0]],
         arr[distance[1]]
       );
-      flot32Array[idx * 3] = result[0];
-      flot32Array[idx * 3 + 1] = result[1];
-      flot32Array[idx * 3 + 2] = result[2];
+      flot32Array[idx + 1 * 3] = result[0] / 3000;
+      flot32Array[idx + 1 * 3 + 1] = result[1] / 3000;
+      flot32Array[idx + 1 * 3 + 2] = result[2] / 3000;
     });
-
     return flot32Array;
   }
 }
