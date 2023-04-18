@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "es6"],
     "types": ["vite/client", "node"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -17,5 +17,6 @@
     "typeRoots": ["./node_modules/@types", "@types"],
     "experimentalDecorators": true
   },
-  "include": ["./src", "vite.config.js"]
+  "include": ["./src", "vite.config.js"],
+  "lib": ["es2015"]
 }

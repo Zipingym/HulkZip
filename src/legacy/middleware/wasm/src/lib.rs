@@ -106,3 +106,9 @@ fn get_distance_between_two_vec(p1: &Vector3, p2: &Vector3) -> f32 {
     let c = p2.z - p1.z;
     return f32::sqrt(a * a + b * b + c * c) / 30.0;
 }
+
+
+fn test() {
+    let a = 1;
+    a = 2;
+}

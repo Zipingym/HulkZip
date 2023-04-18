@@ -1,4 +1,4 @@
-import Classfier from './class/Classfier';
+import Classfier from './legacy/class/Classfier';
 import ExerciseClassfier from './interface/ExerciseClassfier';
 import ExercisePipeline from './interface/ExercisePipeline';
 import JointPosition from './interface/JointPosition';
