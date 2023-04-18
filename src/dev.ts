@@ -1,13 +1,14 @@
-import MpJointPosition from './JointPosition/MpJointPosition';
 import videoSrc from '../static/test2.mp4';
-import ExercisePipelineImpl from './ExercisePipeline';
-import MergePreprocesser from './Preprocesser/MergePreprocesser';
-import AnglePreprocesser from './Preprocesser/AnglePreprocesser';
-import RangePreprocesser2 from './Preprocesser/RangePreprocesser2';
-import Classfier from './ExerciseClassfier/Classfier';
-import '@tensorflow/tfjs-backend-webgl';
-
 import tflite from '../static/work.tflite';
+// import "@tensorflow/tfjs-backend-webgl";
+import {
+  TfliteClassfier,
+  Pipeline,
+  MpJointPosition,
+  MergePreprocesser,
+  AnglePreprocesser,
+  DisPreprocesser2,
+} from './main';
 
 const video = document.createElement('video');
 video.src = videoSrc;
@@ -15,19 +16,20 @@ video.src = videoSrc;
 document.getElementById('app')?.appendChild(video);
 video.muted = true;
 
-const pipeline = new ExercisePipelineImpl();
+const pipeline = new Pipeline();
 
-const JointPosition = new MpJointPosition(
-  'https://cdn.jsdelivr.net/npm/@mediapipe/pose/',
-  { modelComplexity: 1 }
-);
+const JointPosition = new MpJointPosition({ modelComplexity: 1 });
 const preprocesser = new MergePreprocesser(
   new AnglePreprocesser(),
-  new RangePreprocesser2()
+  new DisPreprocesser2()
 );
-const classfier = new Classfier(tflite);
+const classfier = new TfliteClassfier(tflite);
 
-Promise.all([JointPosition.init(), classfier.init()]).then(() => {
+Promise.all([
+  JointPosition.init(),
+  classfier.init(),
+  import('@tensorflow/tfjs-backend-webgl'),
+]).then(() => {
   video.play();
   pipeline.setJointPosition(JointPosition);
   pipeline.setPreprocesser(preprocesser);

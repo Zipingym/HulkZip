@@ -1,6 +1,6 @@
 {
   "name": "@zipingym/pose-input",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc && vite build",
@@ -44,7 +44,6 @@
     "vite-tsconfig-paths": "^4.0.5"
   },
   "dependencies": {
-    "@dannadori/mediapipe-mix-worker-js": "^0.0.30",
     "@mediapipe/pose": "^0.5.1675469404",
     "@tensorflow-models/pose-detection": "^2.0.0",
     "@tensorflow/tfjs-converter": "^4.3.0",
