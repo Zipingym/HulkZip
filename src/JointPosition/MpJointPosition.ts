@@ -35,18 +35,22 @@ export default class MpJointPosition implements JointPosition {
       this.pose.onResults((result: mp.Results) => {
         const joint = new Array();
         const accuracy = new Array();
-        result.poseWorldLandmarks.forEach((lmd) => {
-          joint.push({
-            x: lmd.x,
-            y: lmd.y,
-            z: lmd.z,
+        if (result.poseWorldLandmarks != undefined) {
+          result.poseWorldLandmarks.forEach((lmd) => {
+            joint.push({
+              x: lmd.x,
+              y: lmd.y,
+              z: lmd.z,
+            });
+            accuracy.push(lmd.visibility ?? 0);
           });
-          accuracy.push(lmd.visibility ?? 0);
-        });
-        resolve({
-          joint,
-          accuracy,
-        });
+          resolve({
+            joint,
+            accuracy,
+          });
+        } else {
+          reject('No Human detected');
+        }
       });
     });
   }

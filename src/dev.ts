@@ -10,6 +10,7 @@ import {
   DisPreprocesser2,
   DisPreprocesser,
 } from './main';
+import WebcamBuilder from './webcam';
 
 const video = document.createElement('video');
 video.src = videoSrc;
@@ -28,6 +29,7 @@ Promise.all([
   JointPosition.init(),
   classfier.init(),
   import('@tensorflow/tfjs-backend-webgl'),
+  WebcamBuilder(video),
 ]).then(() => {
   video.play();
   pipeline.setJointPosition(JointPosition);
@@ -35,6 +37,6 @@ Promise.all([
   pipeline.setClassfier(classfier);
 
   setInterval(() => {
-    // pipeline.run(video).then((res) => console.log(res[0] > 0.5));
+    pipeline.run(video).then((res) => console.log());
   }, 1000 / 60);
 });
